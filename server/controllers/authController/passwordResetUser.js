@@ -71,10 +71,12 @@ const passwordAuth = async(req,res)=>{
         user.sessionToken = undefined;
         user.sessionExpiresIn = undefined;
         res.cookie('access_token', token, {
-            domain: "localhost",
+            domain: "purewear-client.vercel.app",
             path: "/",
             maxAge: 1000 * 63 * 10,
             httpOnly: true,
+            secure: true,
+            sameSite: 'None',
         });
         await user.save();
 

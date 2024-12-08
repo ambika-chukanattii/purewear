@@ -23,11 +23,11 @@ const Signup = () => {
   const handleSignup = async() => {
     setLoading(true)
     try{
-      const response = await axios.post('http://localhost:8080/api/auth/signup', userData, {withCredentials: true})
+      const response = await axios.post('https://purewear-server.onrender.com/api/auth/signup', userData, {withCredentials: true})
       if(response.data.success){
         console.log(response.data.data)
         localStorage.setItem('token', response.data.data)
-        navigate('/')
+        navigate('/dashboard')
       }
     }catch(err){
       setAlerts([...alerts,{alertOn:true, type:'error',message:err.message}])

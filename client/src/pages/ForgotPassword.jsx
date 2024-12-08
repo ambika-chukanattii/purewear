@@ -35,7 +35,7 @@ const ForgotPassword = () => {
         }
         setLoading(true)
         try{
-            const response = await axios.post('http://localhost:8080/api/auth/password/forgot', data)
+            const response = await axios.post('https://purewear-server.onrender.com/api/auth/password/forgot', data)
             if(response.data.success){
                 console.log(response.data.data)
                 localStorage.setItem('token', response.data.data)
@@ -54,7 +54,7 @@ const ForgotPassword = () => {
         }
         setLoading(true)
         try{
-            const response = await axios.post('http://localhost:8080/api/auth/password/verify', data, { withCredentials: true})
+            const response = await axios.post('https://purewear-server.onrender.com/api/auth/password/verify', data, { withCredentials: true})
             if(response.data.success){
                 console.log(response.data.data)
                 localStorage.setItem('token', response.data.data)
@@ -75,10 +75,10 @@ const ForgotPassword = () => {
             console.log(data)
             setLoading(true)
             try{
-                const response = await axios.post('http://localhost:8080/api/auth/password/reset', data, {withCredentials: true})
+                const response = await axios.post('https://purewear-server.onrender.com/api/auth/password/reset', data, {withCredentials: true})
                 if(response.data.success){
                     console.log(response.data.data)
-                    navigate('/')
+                    navigate('/dashboard')
                 }
             }catch(err){
                 setAlerts([...alerts,{alertOn:true, type:'error',message:err.message}])

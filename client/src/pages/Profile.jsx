@@ -21,13 +21,13 @@ const Profile = () => {
     }
     setLoading(true)
     try{
-      const res1 = await axios.post('http://localhost:8080/api/user/profile/get',data,{withCredentials:true})
-      const res2 = await axios.post('http://localhost:8080/api/user/address/get',data,{withCredentials:true})
+      const res1 = await axios.post('https://purewear-server.onrender.com/api/user/profile/get',data,{withCredentials:true})
+      const res2 = await axios.post('https://purewear-server.onrender.com/api/user/address/get',data,{withCredentials:true})
       setUser(res1.data.data)
       setAddresses(res2.data.data)
     }catch(err){
       if(err.status==401){
-        navigate('/login')
+        navigate('/')
       }
       setAlerts([...alerts,{alertOn:true, type:'error',message:err.message}])
     }finally{
@@ -48,7 +48,7 @@ const Profile = () => {
     }
     setLoading(true)
     try{
-      const response = await axios.post('http://localhost:8080/api/user/profile/update',data,{withCredentials:true})
+      const response = await axios.post('https://purewear-server.onrender.com/api/user/profile/update',data,{withCredentials:true})
       
       if(response.statusText=='OK'){
         console.log(response.data.data)
@@ -57,7 +57,7 @@ const Profile = () => {
       }
     }catch(err){
       if(err.status==401){
-        navigate('/login')
+        navigate('/')
       }
       setAlerts([...alerts,{alertOn:true, type:'error',message:err.message}])
     }finally{
@@ -72,7 +72,7 @@ const Profile = () => {
     }
     setLoading(true)
     try{
-      const response = await axios.post('http://localhost:8080/api/user/address/add',data,{withCredentials:true})
+      const response = await axios.post('https://purewear-server.onrender.com/api/user/address/add',data,{withCredentials:true})
       
       if(response.data.success){
         console.log(response.data.data)
@@ -81,7 +81,7 @@ const Profile = () => {
       }
     }catch(err){
       if(err.status==401){
-        navigate('/login')
+        navigate('/')
       }
       setAlerts([...alerts,{alertOn:true, type:'error',message:err.message}])
     }finally{
@@ -97,7 +97,7 @@ const Profile = () => {
     }
     setLoading(true)
     try{
-      const response = await axios.post('http://localhost:8080/api/user/address/update',data,{withCredentials:true})
+      const response = await axios.post('https://purewear-server.onrender.com/api/user/address/update',data,{withCredentials:true})
       console.log(response)
       
       if(response.data.success){
@@ -107,7 +107,7 @@ const Profile = () => {
       }
     }catch(err){
       if(err.status==401){
-        navigate('/login')
+        navigate('/')
       }
       setAlerts([...alerts,{alertOn:true, type:'error',message:err.message}])
     }finally{
@@ -121,7 +121,7 @@ const Profile = () => {
     }
     setLoading(true)
     try{
-      const response = await axios.post('http://localhost:8080/api/user/address/remove',data,{withCredentials:true})
+      const response = await axios.post('https://purewear-server.onrender.com/api/user/address/remove',data,{withCredentials:true})
       console.log(response)
       
       if(response.data.success){
@@ -131,7 +131,7 @@ const Profile = () => {
       }
     }catch(err){
       if(err.status==401){
-        navigate('/login')
+        navigate('/')
       }
       setAlerts([...alerts,{alertOn:true, type:'error',message:err.message}])
     }finally{
@@ -148,13 +148,13 @@ const Profile = () => {
   const handleLogout = async() => {
     setLoading(true)
     try{
-      const response = await axios.post('http://localhost:8080/api/auth/logout',{},{withCredentials: true})
+      const response = await axios.post('https://purewear-server.onrender.com/api/auth/logout',{},{withCredentials: true})
       if(response.data.success){
-        navigate('/login')
+        navigate('/')
       }
     }catch(err){
       if(err.status==401){
-        navigate('/login')
+        navigate('/')
       }
       setAlerts([...alerts,{alertOn:true, type:'error',message:err.message}])
     }finally{
@@ -165,7 +165,7 @@ const Profile = () => {
   return (
     <div className='relative w-full flex flex-col items-center'>
       <Header user={user} handleLogout={handleLogout}/>
-      <Link to={`/`} className='w-11/12 flex justify-start py-3'>
+      <Link to={`/dashboard`} className='w-11/12 flex justify-start py-3'>
         <svg xmlns="http://www.w3.org/2000/svg" className='w-6 h-6 cursor-pointer' viewBox="0 0 32 32"><path d="M32 15H3.41l8.29-8.29-1.41-1.42-10 10a1 1 0 0 0 0 1.41l10 10 1.41-1.41L3.41 17H32z" data-name="4-Arrow Left"/></svg>
       </Link>
       { loading && 

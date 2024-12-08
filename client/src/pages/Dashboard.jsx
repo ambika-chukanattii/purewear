@@ -37,7 +37,7 @@ const Dashboard = () => {
   const fetchProducts = async() => {
     setLoading(true)
     try{
-      const response = await axios.get('http://localhost:8080/api/product/get/all')
+      const response = await axios.get('https://purewear-server.onrender.com/api/product/get/all')
       setProducts(response.data.data)
     }catch(err){
       setAlerts([...alerts,{alertOn:true, type:'error',message:err.message}])
@@ -50,8 +50,8 @@ const Dashboard = () => {
   const fetchUserData = async() => {
     setLoading(true)
     try{
-      const res1 = await axios.post('http://localhost:8080/api/user/profile/get',{},{withCredentials: true})
-      const res2 = await axios.post('http://localhost:8080/api/user/wishlist/get',{},{withCredentials: true})
+      const res1 = await axios.post('https://purewear-server.onrender.com/api/user/profile/get',{},{withCredentials: true})
+      const res2 = await axios.post('https://purewear-server.onrender.com/api/user/wishlist/get',{},{withCredentials: true})
       if(res1.data.success){
         setUser(res1.data.data)
       }
@@ -60,7 +60,7 @@ const Dashboard = () => {
       }
     }catch(err){
       if(err.status==401){
-        navigate('/login')
+        navigate('/')
       }
       setAlerts([...alerts,{alertOn:true, type:'error',message:err.message}])
     }finally{
@@ -79,7 +79,7 @@ const Dashboard = () => {
     }
     setLoading(true)
     try{
-      const response = await axios.post('http://localhost:8080/api/user/wishlist/add', data,{withCredentials:true})
+      const response = await axios.post('https://purewear-server.onrender.com/api/user/wishlist/add', data,{withCredentials:true})
       if(response.data.success){
         setWishlist([...wishlist,pid])
         console.log(wishlist)
@@ -87,7 +87,7 @@ const Dashboard = () => {
       }
     }catch(err){
       if(err.status==401){
-        navigate('/login')
+        navigate('/')
       }
       setAlerts([...alerts,{alertOn:true, type:'error',message:err.message}])
     }finally{
@@ -101,7 +101,7 @@ const Dashboard = () => {
     }
     setLoading(true)
     try{
-      const response = await axios.post(`http://localhost:8080/api/user/wishlist/remove`, data,{withCredentials:true})
+      const response = await axios.post(`https://purewear-server.onrender.com/api/user/wishlist/remove`, data,{withCredentials:true})
       if(response.data.success){
         setWishlist(wishlist.filter(item => item!== pid))
         console.log(wishlist)
@@ -109,7 +109,7 @@ const Dashboard = () => {
       }
     }catch(err){
       if(err.status==401){
-        navigate('/login')
+        navigate('/')
       }
       setAlerts([...alerts,{alertOn:true, type:'error',message:err.message}])
     }finally{
@@ -120,13 +120,13 @@ const Dashboard = () => {
   const handleLogout = async() => {
     setLoading(true)
     try{
-      const response = await axios.post('http://localhost:8080/api/auth/logout',{},{withCredentials: true})
+      const response = await axios.post('https://purewear-server.onrender.com/api/auth/logout',{},{withCredentials: true})
       if(response.data.success){
-        navigate('/login')
+        navigate('/')
       }
     }catch(err){
       if(err.status==401){
-        navigate('/login')
+        navigate('/')
       }
       setAlerts([...alerts,{alertOn:true, type:'error',message:err.message}])
     }finally{

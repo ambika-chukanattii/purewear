@@ -38,18 +38,18 @@ const Payment = () => {
         }
         setLoading(true)
         try{
-            const res1 = await axios.post('http://localhost:8080/api/user/profile/get',data,{withCredentials:true})
+            const res1 = await axios.post('https://purewear-server.onrender.com/api/user/profile/get',data,{withCredentials:true})
             if(res1.data.success){
               setuser(res1.data.data)
             }
-            const res2 = await axios.post('http://localhost:8080/api/user/checkout/get', data,{withCredentials:true})
+            const res2 = await axios.post('https://purewear-server.onrender.com/api/user/checkout/get', data,{withCredentials:true})
             if(res2.data.success){
               setCheckout(res2.data.data)
               console.log(res2)
               const cartItems = res2.data.data.cartItems
 
                 const productPromises = cartItems.map(async (item) => {
-                    const res3 = await axios.get(`http://localhost:8080/api/product/get/${item.pid}`);
+                    const res3 = await axios.get(`https://purewear-server.onrender.com/api/product/get/${item.pid}`);
                     return res3.data.data;
                 });
 
@@ -66,7 +66,7 @@ const Payment = () => {
                   amount: (updatedTotal+30)*100
                 }
 
-                const res4 = await axios.post('http://localhost:8080/api/user/cart/checkout/payment',paymentData,{withCredentials:true})
+                const res4 = await axios.post('https://purewear-server.onrender.com/api/user/cart/checkout/payment',paymentData,{withCredentials:true})
                 if(res4.data.success){
                   setClientSecret(res4.data.clientSecret)
                 }
@@ -74,7 +74,7 @@ const Payment = () => {
     
         }catch(err){
           if(err.status==401){
-            navigate('/login')
+            navigate('/')
           }
           setAlerts([...alerts,{alertOn:true, type:'error',message:err.message}])
         }finally{
@@ -92,11 +92,11 @@ const Payment = () => {
         }
         setLoading(true)
         try{
-          const response = await axios.post('http://localhost:8080/api/user/checkout/update',data,{withCredentials:true})
+          const response = await axios.post('https://purewear-server.onrender.com/api/user/checkout/update',data,{withCredentials:true})
           setCheckout(response.data.data)
         }catch(err){
           if(err.status==401){
-            navigate('/login')
+            navigate('/')
           }
           setAlerts([...alerts,{alertOn:true, type:'error',message:err.message}])
         }finally{
@@ -113,13 +113,13 @@ const Payment = () => {
       const handleLogout = async() => {
         setLoading(true)
         try{
-          const response = await axios.post('http://localhost:8080/api/auth/logout',{},{withCredentials: true})
+          const response = await axios.post('https://purewear-server.onrender.com/api/auth/logout',{},{withCredentials: true})
           if(response.data.success){
-            navigate('/login')
+            navigate('/')
           }
         }catch(err){
           if(err.status==401){
-            navigate('/login')
+            navigate('/')
           }
           setAlerts([...alerts,{alertOn:true, type:'error',message:err.message}])
         }finally{

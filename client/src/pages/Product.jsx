@@ -23,7 +23,7 @@ const Product = () => {
   const fetchProduct = async() => {
     setLoading(true)
     try{
-      const res = await axios.get(`http://localhost:8080/api/product/get/${pid}`)
+      const res = await axios.get(`https://purewear-server.onrender.com/api/product/get/${pid}`)
       if(res.statusText=='OK'){
         const resItem = res.data.data
         setProduct(resItem)
@@ -40,9 +40,9 @@ const Product = () => {
   const setup = async() => {
     setLoading(true)
     try{
-      const res2 = await axios.post('http://localhost:8080/api/user/wishlist/get',{},{withCredentials:true})
-      const res3 = await axios.post('http://localhost:8080/api/user/cart/get',{},{withCredentials:true})
-      const res1 = await axios.post('http://localhost:8080/api/user/orders/get', {},{withCredentials:true})
+      const res2 = await axios.post('https://purewear-server.onrender.com/api/user/wishlist/get',{},{withCredentials:true})
+      const res3 = await axios.post('https://purewear-server.onrender.com/api/user/cart/get',{},{withCredentials:true})
+      const res1 = await axios.post('https://purewear-server.onrender.com/api/user/orders/get', {},{withCredentials:true})
       if(res2.data.success){
         setWishlist(res2.data.data)
       }
@@ -57,7 +57,7 @@ const Product = () => {
       }
     }catch(err){
       if(err.status==401){
-        navigate('/login')
+        navigate('/')
       }
       setAlerts([...alerts,{alertOn:true, type:'error',message:err.message}])
     }finally{
@@ -95,7 +95,7 @@ const Product = () => {
     }
     setLoading(true)
     try{
-      const response = await axios.post('http://localhost:8080/api/user/wishlist/add', data,{withCredentials:true})
+      const response = await axios.post('https://purewear-server.onrender.com/api/user/wishlist/add', data,{withCredentials:true})
       if(response.data.success){
         setWishlist([...wishlist,pid])
         setLiked(true)
@@ -104,7 +104,7 @@ const Product = () => {
       }
     }catch(err){
       if(err.status==401){
-        navigate('/login')
+        navigate('/')
       }
       setAlerts([...alerts,{alertOn:true, type:'error',message:err.message}])
     }finally{
@@ -118,7 +118,7 @@ const Product = () => {
     }
     setLoading(true)
     try{
-      const response = await axios.post(`http://localhost:8080/api/user/wishlist/remove`, data,{withCredentials:true})
+      const response = await axios.post(`https://purewear-server.onrender.com/api/user/wishlist/remove`, data,{withCredentials:true})
       if(response.statusText=='OK'){
         setWishlist(wishlist.filter(item => item!== pid))
         setLiked(false)
@@ -127,7 +127,7 @@ const Product = () => {
       }
     }catch(err){
       if(err.status==401){
-        navigate('/login')
+        navigate('/')
       }
       setAlerts([...alerts,{alertOn:true, type:'error',message:err.message}])
     }finally{
@@ -161,13 +161,13 @@ const Product = () => {
     }
     setLoading(true)
     try{
-      const response = await axios.post('http://localhost:8080/api/user/cart/add', data,{withCredentials:true})
+      const response = await axios.post('https://purewear-server.onrender.com/api/user/cart/add', data,{withCredentials:true})
       if(response.data.success){
         setAlerts([...alerts,{alertOn:true, type:'success',message:'Added to cart'}])
       }
     }catch(err){
       if(err.status==401){
-        navigate('/login')
+        navigate('/')
       }
       setAlerts([...alerts,{alertOn:true, type:'error',message:err.message}])
     }finally{
@@ -184,13 +184,13 @@ const Product = () => {
   const handleLogout = async() => {
     setLoading(true)
     try{
-      const response = await axios.post('http://localhost:8080/api/auth/logout',{},{withCredentials: true})
+      const response = await axios.post('https://purewear-server.onrender.com/api/auth/logout',{},{withCredentials: true})
       if(response.data.success){
-        navigate('/login')
+        navigate('/')
       }
     }catch(err){
       if(err.status==401){
-        navigate('/login')
+        navigate('/')
       }
       setAlerts([...alerts,{alertOn:true, type:'error',message:err.message}])
     }finally{
@@ -212,7 +212,7 @@ const Product = () => {
           ))}
       </div>
       <section class="mb-4 w-11/12">
-          <Link to={'/'}>
+          <Link to={'/dashboard'}>
             <svg xmlns="http://www.w3.org/2000/svg" className='w-6 h-6 cursor-pointer' viewBox="0 0 32 32"><path d="M32 15H3.41l8.29-8.29-1.41-1.42-10 10a1 1 0 0 0 0 1.41l10 10 1.41-1.41L3.41 17H32z" data-name="4-Arrow Left"/></svg>
           </Link> 
           <div>

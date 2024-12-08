@@ -1,15 +1,16 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 import { Error, Login, Signup, ForgotPassword, Dashboard, Product, Wishlist, Cart, Profile, Orders, Checkout, Payment, PaymentStatus } from './pages';
 
-const App = () => (
+const App = () => {
+
+  return (
   <BrowserRouter>
-    <main className="relative flex justify-center w-full bg-[#f9fafe] min-h-[calc(100vh-73px)]">
-      
+    <main className="relative flex flex-col justify-center w-full bg-[#f9fafe] min-h-[calc(100vh-73px)]">
         <Routes>
-          <Route path="/" element={<Dashboard />} />
-          <Route path="/login" element={<Login />} />
+          <Route path="/" element={<Login />} />
+          <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/password/forgot" element={<ForgotPassword />} />
           <Route path="/product/:pid" element={<Product />} />
@@ -25,6 +26,6 @@ const App = () => (
         </Routes>
     </main>
   </BrowserRouter>
-);
+)};
 
 export default App;

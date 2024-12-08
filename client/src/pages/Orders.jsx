@@ -15,8 +15,8 @@ const Orders = () => {
   const setup = async() => {
     setLoading(true)
     try{
-      const res1 = await axios.post('http://localhost:8080/api/user/orders/get', {},{withCredentials:true})
-      const res2 = await axios.post('http://localhost:8080/api/user/profile/get',{},{withCredentials: true})
+      const res1 = await axios.post('https://purewear-server.onrender.com/api/user/orders/get', {},{withCredentials:true})
+      const res2 = await axios.post('https://purewear-server.onrender.com/api/user/profile/get',{},{withCredentials: true})
       const orderItems = res1.data.orders
       orderItems.reverse()
       setOrders(orderItems)
@@ -24,7 +24,7 @@ const Orders = () => {
 
       const productPromises = orderItems.map(async (item) => {
         const subItemPromises = item.cartItems.map(async(subItem)=>{
-          const res = await axios.get(`http://localhost:8080/api/product/get/${subItem.pid}`)
+          const res = await axios.get(`https://purewear-server.onrender.com/api/product/get/${subItem.pid}`)
           return res.data.data
         })
         return await Promise.all(subItemPromises)
@@ -39,7 +39,7 @@ const Orders = () => {
       }
     } catch (err) {
       if(err.status==401){
-        navigate('/login')
+        navigate('/')
       }
       setAlerts([...alerts,{alertOn:true, type:'error',message:err.message}])
     } finally {
@@ -60,13 +60,13 @@ const Orders = () => {
   const handleLogout = async() => {
     setLoading(true)
     try{
-      const response = await axios.post('http://localhost:8080/api/auth/logout',{},{withCredentials: true})
+      const response = await axios.post('https://purewear-server.onrender.com/api/auth/logout',{},{withCredentials: true})
       if(response.data.success){
-        navigate('/login')
+        navigate('/')
       }
     }catch(err){
       if(err.status==401){
-        navigate('/login')
+        navigate('/')
       }
       setAlerts([...alerts,{alertOn:true, type:'error',message:err.message}])
     }finally{
@@ -88,7 +88,7 @@ const Orders = () => {
           ))}
       </div>
         <div className='w-11/12 mt-2 flex flex-col justify-center items-center'> 
-          <Link to={`/`} className='w-full'>
+          <Link to={`/dashboard`} className='w-full'>
               <svg xmlns="http://www.w3.org/2000/svg" className='flex w-6 h-6 cursor-pointer justify-start' viewBox="0 0 32 32"><path d="M32 15H3.41l8.29-8.29-1.41-1.42-10 10a1 1 0 0 0 0 1.41l10 10 1.41-1.41L3.41 17H32z" data-name="4-Arrow Left"/></svg>
           </Link>
           <p class="flex mt-2 w-full justify-start pl-8 text-xl font-bold">All Orders</p>
