@@ -4,7 +4,7 @@
 PUREWEAR is a cloth brand, retail, e-commerce website built using MERN stack, JWT authentication and Stripe for payments.
 Completely responsive in Laptop, Tab and Mobile devices. Dynamic and consistent design accross the whole website with secure and modern coding practices.
 
-checkout live - [purewear.vercel.com](https://www.purewear.vercel.app)
+checkout live - [purewear.vercel.com](https://purewear.vercel.app/)
 
 
 
