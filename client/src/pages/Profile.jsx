@@ -179,7 +179,7 @@ const Profile = () => {
           ))}
       </div>
       <div className='w-11/12 flex md:flex-row flex-col items-start justify-center pt-8'>
-        <div className='md:w-1/4 w-full border border-gray-400 flex md:flex-col flex-row items-center justify-start'>
+        <div className='md:w-1/4 w-full border-l border-y border-gray-400 flex md:flex-col flex-row items-center justify-start'>
           <h2 className='md:block hidden font-bold text-lg py-2'>Account</h2>
           <div className='py-2 border w-full flex flex-row items-center justify-center md:mx-0 mx-4'>
               <img src="https://as1.ftcdn.net/v2/jpg/03/53/11/00/1000_F_353110097_nbpmfn9iHlxef4EDIhXB1tdTD0lcWhG9.jpg" alt="profile" className='rounded-full w-8 h-8 object-cover mx-2'/>
