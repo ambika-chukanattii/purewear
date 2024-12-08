@@ -81,7 +81,7 @@ const EditAddress = ({ userAddress, addAddress, editAddress, removeAddress }) =>
   }
 
   return (
-    <div className='w-full px-4 border-x border-r border-gray-400'>
+    <div className='w-full px-4 border border-gray-400'>
         <div className='w-full py-4 flex flex-row justify-between'>
             <div className='font-bold'>Saved Addresses</div>
             <button className='flex items-center justify-center px-2 text-xs font-medium border text-gray-600 border-gray-600 rounded' onClick={handleNewModal}>ADD NEW ADDRESS +</button>
