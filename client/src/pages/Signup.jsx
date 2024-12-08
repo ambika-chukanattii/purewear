@@ -69,7 +69,7 @@ const Signup = () => {
               <p className='text-gray-400 text-xs mt-1'>Please Enter Details</p>
           </div>
           <div className='w-9/12 flex flex-col'>
-            <div className='w-full flex flex-row md:flex-col lg:flex-row'>
+            <div className='w-full flex flex-col lg:flex-row'>
               <div className='w-full mb-4 mr-6 md:mr-0 lg:mr-6 flex flex-col'>
                 <label>First Name:</label>
                 <input className='border border-gray-400 outline-gray-400 py-2 rounded-lg px-4' required name='fname' value={userData.fname} onChange={handleUserDataChange}/>
