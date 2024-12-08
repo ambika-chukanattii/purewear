@@ -43,7 +43,7 @@ const Header = ({user, handleLogout }) => {
   },[setClicked, isSidebarOpen])
 
   const handleLogoClick = () => {
-    navigate('/')
+    navigate('/dashboard')
     window.location.reload()
   }
 
