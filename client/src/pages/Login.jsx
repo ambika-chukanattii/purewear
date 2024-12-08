@@ -61,7 +61,7 @@ const Login = () => {
             PUREWEAR
           </div>
       <div className='w-full h-full'>
-        <img src={img1} className='w-full h-full object-cover inset-0'/>
+        <img src={img1} className='w-full h-96 lg:h-full object-cover inset-0'/>
       </div>
       <div className='w-full flex flex-col items-center justify-center py-48 md:py-0'>
         <div className='w-3/5 mb-4'>
