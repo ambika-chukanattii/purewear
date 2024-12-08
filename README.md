@@ -68,14 +68,6 @@ Add vercel.json to the client folder and deploy the client folder in vercel.
 Deploy the server folder in render.com
 
 
-
-## Screenshots
-
-![s1](https://drive.google.com/drive/folders/1XK4rXCY7ZIerjCyDbj3pcj45kXs0e4IL)
-
-![s2](https://drive.google.com/file/d/13NiPRmCbilj2X5fssz_5YdsUAu85NWOa/view?usp=sharing)
-
-
 ## Acknowledgements
 
  - Images used in this project from [Uniqlo.com](https://www.uniqlo.com/in/en/).
