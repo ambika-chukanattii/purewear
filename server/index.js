@@ -13,13 +13,15 @@ dotenv.config();
 const PORT = process.env.PORT || 5000;
 const app = express();
 
-app.use(cors({
+const corsOptions = {
     origin:'https://purewear.vercel.app',
-    methods: ['GET', 'POST', 'DELETE','PUT'],
+    methods: ['GET', 'POST', 'DELETE','PUT','OPTIONS'],
     credentials: true
-}));
+}
+app.use(cors(corsOptions));
 app.use(express.json());
 app.use(cookieParser());
+app.options('*', cors(corsOptions))
 
 app.use('/api/auth', auth_router);
 app.use('/api/product', product_router);
@@ -29,7 +31,7 @@ const startserver = async() => {
     try{
         connectDB();
         app.listen(PORT, ()=>{
-            console.log(`Server is running on http://localhost:${PORT}`);
+            console.log('Server is running on https://purewear-server.onrender.com');
         });
     }catch(err){
         console.log(err)
