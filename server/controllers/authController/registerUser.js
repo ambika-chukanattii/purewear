@@ -24,7 +24,6 @@ const registerUser = async(req,res)=>{
         const token = jwt.sign({ id: newUser._id }, process.env.JWT_KEY, { expiresIn: '5m'});
 
         res.cookie('access_token', token, {
-            domain: "purewear-client.vercel.app",
             path: "/",
             maxAge: 1000 * 63 * 10,
             httpOnly: true,
