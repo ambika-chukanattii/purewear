@@ -109,7 +109,7 @@ const EditAddress = ({ userAddress, addAddress, editAddress, removeAddress }) =>
                     <div className='shadow border border-gray-300 px-4 py-2'>
                         <h4 className='font-medium pb-1'>{address.fname} {address.lname}</h4>
                         <p>{address.area1}<br/>{address.area2}<br/>{address.city} {address.state} - {address.pincode}</p>
-                        <p className='text-xs text-gray-600 pt-1 mb-4'>Mobile No: {address.pnone}</p>
+                        <p className='text-xs text-gray-600 pt-1 mb-4'>Mobile No: {address.phone}</p>
                         <div className='text-xs font-medium text-blue-800 w-full justify-center items-center flex flex-row'>
                             <div className='flex border cursor-pointer w-full justify-center items-center py-2' onClick={()=>handleEditModal(ai)}>EDIT</div>
                             <div className='flex border cursor-pointer w-full justify-center items-center py-2' onClick={()=>removeAddress(ai)}>REMOVE</div>
