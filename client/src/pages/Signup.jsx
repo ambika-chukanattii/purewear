@@ -86,7 +86,7 @@ const Signup = () => {
             <button className='bg-black text-white py-2 rounded-lg my-2' onClick={handleSignup}>Signup</button>
         </div>
         <div className='w-9/12 mt-2 flex flex-row justify-between'>
-          <Link to={"/login"}>Already have an account? Login</Link>
+          <Link to={"/"}>Already have an account? Login</Link>
         </div>
       </div>
     </div>
