@@ -24,7 +24,7 @@ const Product = () => {
     setLoading(true)
     try{
       const res = await axios.get(`https://purewear-server.onrender.com/api/product/get/${pid}`)
-      if(res.statusText=='OK'){
+      if(res.data.success){
         const resItem = res.data.data
         setProduct(resItem)
         setCartItem({...cartItem, color:resItem.colors[0], size:resItem.sizes[0]})
