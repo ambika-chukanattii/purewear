@@ -26,6 +26,9 @@ checkout live - [purewear.vercel.com](https://purewear.vercel.app/)
 ## Installation
 
 ```bash
+- clone the repo
+  git clone https://github.com/blue4e2/purewear.git
+
 - Server
   cd purewear/server
   npm install
