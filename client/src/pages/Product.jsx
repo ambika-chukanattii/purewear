@@ -119,7 +119,7 @@ const Product = () => {
     setLoading(true)
     try{
       const response = await axios.post(`https://purewear-server.onrender.com/api/user/wishlist/remove`, data,{withCredentials:true})
-      if(response.statusText=='OK'){
+      if(response.data.success){
         setWishlist(wishlist.filter(item => item!== pid))
         setLiked(false)
         console.log(wishlist)
