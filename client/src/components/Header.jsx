@@ -44,7 +44,6 @@ const Header = ({user, handleLogout }) => {
 
   const handleLogoClick = () => {
     navigate('/dashboard')
-    window.location.reload()
   }
 
   return (
