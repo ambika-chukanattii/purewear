@@ -112,7 +112,7 @@ const Cart = () => {
       const res = await axios.post("https://purewear-server.onrender.com/api/user/cart/remove",data,{withCredentials:true})
       console.log(res)
 
-      if(res.statusText=='OK'){
+      if(response.data.success){
         setCart(res.data.data)
         setTotal(prev => prev-(cartItem.quantity*price))
         setAlerts([...alerts,{alertOn:true, type:'success',message:"Item removed from the cart"}])
