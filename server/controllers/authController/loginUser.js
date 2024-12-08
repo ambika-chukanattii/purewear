@@ -22,7 +22,6 @@ const loginUser = async(req,res)=>{
             await user.save();
 
             res.cookie('access_token', token, {
-                domain: "purewear.vercel.app",
                 path: "/",
                 maxAge: 1000 * 63 * 10,
                 httpOnly: true,
