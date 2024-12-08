@@ -22,7 +22,7 @@ const CheckoutForm = ({user, checkout, updatePaymentMethod, handleAlert}) => {
       const { err, paymentIntent } = await stripe.confirmPayment({
         elements,
         confirmParams: {
-          return_url: "http://localhost:5173/cart/checkout/payment/status",
+          return_url: "https://purewear.vercel.app/cart/checkout/payment/status",
         },
       })
 
