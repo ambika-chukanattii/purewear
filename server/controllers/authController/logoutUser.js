@@ -10,7 +10,6 @@ const logoutUser = async(req, res) => {
         }
 
         res.clearCookie('access_token', {
-            domain: "purewear-client.vercel.app",
             path: "/"
         });
         
