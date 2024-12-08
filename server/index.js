@@ -16,6 +16,7 @@ const app = express();
 const corsOptions = {
     origin:'https://purewear.vercel.app',
     methods: ['GET', 'POST', 'DELETE','PUT','OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
     credentials: true
 }
 app.use(cors(corsOptions));
