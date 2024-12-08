@@ -118,7 +118,7 @@ const ForgotPassword = () => {
         <img src={img3} className='w-full h-full object-cover inset-0'/>
       </div>
       <div className='w-full flex flex-col items-center justify-center py-56 md:py-0'>
-        <Link className='w-3/5 mb-4 font-medium flex flex-row' to={"/login"}>
+        <Link className='w-3/5 mb-4 font-medium flex flex-row' to={"/"}>
             <span className=''>
                 <svg fill="#000000" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" enable-background="new 0 0 24 24"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path d="M11.3,12l3.5-3.5c0.4-0.4,0.4-1,0-1.4c-0.4-0.4-1-0.4-1.4,0l-4.2,4.2l0,0c-0.4,0.4-0.4,1,0,1.4l4.2,4.2c0.2,0.2,0.4,0.3,0.7,0.3l0,0c0.3,0,0.5-0.1,0.7-0.3c0.4-0.4,0.4-1,0-1.4L11.3,12z"></path></g></svg>
             </span>
